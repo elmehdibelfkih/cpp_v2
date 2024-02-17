@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:47:18 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/17 05:36:27 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/02/17 05:38:11 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,21 @@ Bureaucrat::Bureaucrat()
 {
     this->_name = "";
     this->_grade = 150;
+}
+
+Bureaucrat::Bureaucrat(std::string name, short int grade)
+{
+    this->_name = name;
+    try
+    {
+        if (grade > 150 || grade < 1)
+            throw std::exception();
+        this->_grade = grade;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj)
@@ -35,23 +50,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj)
 }
 
 Bureaucrat::~Bureaucrat(){}
-
-//////////////////////////////////////////////////////////////////////////////
-
-Bureaucrat::Bureaucrat(std::string name, short int grade)
-{
-    this->_name = name;
-    try
-    {
-        if (grade > 150 || grade < 1)
-            throw std::exception();
-        this->_grade = grade;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-}
 
 std::string Bureaucrat::getName() const
 {

@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 17:47:15 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/17 05:35:04 by ebelfkih         ###   ########.fr       */
+/*   Created: 2024/02/17 05:03:22 by ebelfkih          #+#    #+#             */
+/*   Updated: 2024/02/17 05:58:59 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once 
+#pragma once
 #include <iostream>
 
-class Bureaucrat
+class Form
 {
 private:
     std::string _name;
-    short int _grade;
-
+    bool _signed;
+    short int _gradeRequiredToSign;
+    short int _gradeRequiredRoExecute;
 public:
-    Bureaucrat();
-    Bureaucrat(const Bureaucrat& obj);
-    Bureaucrat& operator=(const Bureaucrat& obj);
-    ~Bureaucrat();
+    Form();
+    Form& operator=(const Form& obj);
+    Form(const Form& obj);
+    ~Form();
 
-    Bureaucrat(std::string name, short int grade);
-    std::string getName() const;
-    short int getGrade() const;
-    void incrementGrade();
-    void decrementGrade();
+    Form(std::string name, short int _gradeRequiredToSign, short int _gradeRequiredRoExecute);
+    void getName() const;
+    void getgradeRequiredToSign() const;
+    void getgradeRequiredRoExecute() const;
+    
 };
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);
+        
