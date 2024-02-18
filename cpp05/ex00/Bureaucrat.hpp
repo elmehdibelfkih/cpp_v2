@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:47:15 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/17 05:35:04 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/02/18 04:53:04 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ public:
     short int getGrade() const;
     void incrementGrade();
     void decrementGrade();
+    class GradeTooHighException : public std::exception
+    {
+    public:
+        const char * what() const _NOEXCEPT;
+    };
+    class GradeTooLowException : public std::exception
+    {
+    public:
+        const char * what() const _NOEXCEPT;
+    };
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);
