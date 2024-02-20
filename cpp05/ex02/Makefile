@@ -5,15 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/15 17:47:10 by ebelfkih          #+#    #+#              #
-#    Updated: 2024/02/20 02:34:21 by ebelfkih         ###   ########.fr        #
+#    Created: 2024/02/20 02:33:54 by ebelfkih          #+#    #+#              #
+#    Updated: 2024/02/20 04:58:25 by ebelfkih         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Form
+
+NAME = Bureaucrat
 GPP = c++ -std=c++98 -Wall -Wextra -Werror
-SRC =	Bureaucrat.cpp  Form.cpp main.cpp
-HDRS = Bureaucrat.hpp Form.hpp 
+SRC =	Bureaucrat.cpp  AForm.cpp main.cpp
+HDRS = Bureaucrat.hpp AForm.hpp 
 OBJ = $(SRC:%.cpp=%.o)
 
 
