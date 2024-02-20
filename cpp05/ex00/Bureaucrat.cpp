@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:47:18 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/18 04:52:54 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/02/18 05:29:41 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,12 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj)
     return os;
 }
 
-const char * Bureaucrat::GradeTooHighException::what() const _NOEXCEPT
+const char * Bureaucrat::GradeTooHighException::what() const throw()
 {
     return "Grade Too High !!";
 }
 
-const char * Bureaucrat::GradeTooLowException::what() const _NOEXCEPT
+const char * Bureaucrat::GradeTooLowException::what() const throw()
 {
     
     return "Grade Too Low !!";

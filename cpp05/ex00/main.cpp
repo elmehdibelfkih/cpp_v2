@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:47:13 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/17 04:22:01 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/02/18 18:00:55 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,27 @@
 
 int main (void)
 {
-    Bureaucrat ex("mehdi", 222);
-    
-    std::cout << ex.getName() << " : " << ex.getGrade() << std::endl;
-    ex.decrementGrade();
-    std::cout << ex.getName() << " : " << ex.getGrade() << std::endl;
-    std::cout << ex;
-    
+    try
+    {
+        Bureaucrat ex("mehdi", 1);
+        std::cout << ex.getName() << " : " << ex.getGrade() << std::endl;
+        ex.incrementGrade();
+        ex.decrementGrade();
+        std::cout << ex.getName() << " : " << ex.getGrade() << std::endl;
+        std::cout << ex;
+        
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << e.what();   
+    }
+    // catch (const Bureaucrat::GradeTooLowException& e)
+    // {
+    //     std::cout << e.what();
+    // }
+    // catch (const Bureaucrat::GradeTooHighException& e)
+    // {
+    //     std::cout << e.what();
+    // }
     return 0;
 }
