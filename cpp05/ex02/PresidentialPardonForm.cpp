@@ -21,7 +21,14 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& obj)
 {
-    
+    if (this != &obj)
+    {
+        this->setTarget(obj.getTarget());
+        this->setSigned(obj.isSigned());
+        this->setGradeRequiredRoExecute(obj.getgradeRequiredRoExecute());
+        this->setGradeRequiredToSign(obj.getgradeRequiredToSign());
+    }
+    return *this;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm(){}

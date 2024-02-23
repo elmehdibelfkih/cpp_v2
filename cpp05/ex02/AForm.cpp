@@ -6,11 +6,12 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 05:03:33 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/23 04:03:12 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/02/23 06:00:35 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
+
 
 AForm::AForm()
 {
@@ -40,6 +41,7 @@ AForm::AForm(const AForm& obj)
 AForm::~AForm() {}   
 
 /////////////////////////////////////////////////////////////////
+
 
 AForm::AForm(std::string Target, short int gradeRequiredToSign, short int gradeRequiredRoExecute)
 {
@@ -104,3 +106,24 @@ const char * AForm::NotSignedException::what() const throw()
 {
     return "The form is not signed !!";
 }
+
+void AForm::setTarget(std::string target)
+{
+    this->_target = target;
+}
+
+void AForm::setSigned(bool Msigned)
+{
+    this->_signed = Msigned;
+}
+
+void AForm::setGradeRequiredToSign(short int gradeRequiredToSign)
+{
+    this->_gradeRequiredToSign = gradeRequiredToSign;
+}
+
+void AForm::setGradeRequiredRoExecute(short int gradeRequiredRoExecute)
+{
+    this->_gradeRequiredRoExecute = gradeRequiredRoExecute;
+}
+

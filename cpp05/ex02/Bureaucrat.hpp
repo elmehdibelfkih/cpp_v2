@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:47:15 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/20 05:10:39 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/02/23 04:51:10 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ public:
     void incrementGrade();
     void decrementGrade();
     void signForm(const AForm& obj) const;
+    void executeForm(AForm const & form) const;
     class GradeTooHighException : public std::exception
     {
     public:

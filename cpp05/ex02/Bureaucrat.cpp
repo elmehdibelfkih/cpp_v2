@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:47:18 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/23 03:29:10 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/02/23 05:00:04 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,19 @@ void Bureaucrat::signForm(const AForm& obj) const
         std::cout << this->_name <<  " couldn\'t sign " << obj.getTarget() << "because grade too low " << std::endl;
     else
         std::cout << this->_name << " signed " << obj.getTarget() << std::endl;
+}
+
+void Bureaucrat::executeForm(AForm const & form) const
+{
+    try
+    {
+        form.execute(*this);
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << this->getName() <<  " cant  execute this form" << std::endl;
+        std::cerr << e.what() << '\n';
+        return ;
+    }
+    std::cout << this->getName() << " executed " << form.getTarget() << std::endl;
 }

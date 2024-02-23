@@ -17,11 +17,19 @@ ShrubberyCreationForm::ShrubberyCreationForm() : AForm("", 145, 137){}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj)
 {
-
+    *this = obj;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& obj)
 {
+    if (this != &obj)
+    {
+        this->setTarget(obj.getTarget());
+        this->setSigned(obj.isSigned());
+        this->setGradeRequiredRoExecute(obj.getgradeRequiredRoExecute());
+        this->setGradeRequiredToSign(obj.getgradeRequiredToSign());
+    }
+    return *this;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){}
@@ -32,22 +40,29 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target)  : AForm(target
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-    std::string outFile;
-
-    outFile = this->getTarget() + "_shrubbery";
-    std::ofstream otpfile(outFile.c_str());
-    if (!otpfile.is_open())
+    if (!this->isSigned())
+        throw AForm::NotSignedException();
+    else if (executor.getGrade() > this->getgradeRequiredRoExecute())
+        throw AForm::GradeTooLowException();
+    else
     {
-        std::cerr << "Error opening file: " << outFile << std::endl;
-        return ;
+        std::string outFile;
+
+        outFile = this->getTarget() + "_shrubbery";
+        std::ofstream otpfile(outFile.c_str());
+        if (!otpfile.is_open())
+        {
+            std::cerr << "Error opening file: " << outFile << std::endl;
+            return ;
+        }
+        otpfile << "      ^                 ^     \n";
+        otpfile << "     ^^^               ^^^    \n";
+        otpfile << "    ^^^^^             ^^^^^   \n";
+        otpfile << "   ^^^^^^^           ^^^^^^^  \n";
+        otpfile << "  ^^^^^^^^^         ^^^^^^^^^ \n";
+        otpfile << " ^^^^^^^^^^^       ^^^^^^^^^^^\n";
+        otpfile << "    |   |             |   |   \n";
+        otpfile.close();
     }
-    otpfile << "      ^                 ^     \n";
-    otpfile << "     ^^^               ^^^    \n";
-    otpfile << "    ^^^^^             ^^^^^   \n";
-    otpfile << "   ^^^^^^^           ^^^^^^^  \n";
-    otpfile << "  ^^^^^^^^^         ^^^^^^^^^ \n";
-    otpfile << " ^^^^^^^^^^^       ^^^^^^^^^^^\n";
-    otpfile << "    |   |             |   |   \n";
-    otpfile.close();
     return ;
 }
