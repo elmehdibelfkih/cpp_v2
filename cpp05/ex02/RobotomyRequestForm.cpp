@@ -6,13 +6,13 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 05:51:17 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/20 06:28:04 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/02/23 04:14:44 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm()
+RobotomyRequestForm::RobotomyRequestForm() : AForm("", 72, 45)
 {
 
     
@@ -38,7 +38,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 //////////////////////////////////////////////////////////////////////////////
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target)  : AForm(target, 72, 45)
 {
 
     
@@ -46,7 +46,19 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target)
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
+    static int i;
 
-    
+    if (!this->isSigned())
+        throw AForm::NotSignedException();
+    else if (executor.getGrade() > this->getgradeRequiredRoExecute())
+        throw AForm::GradeTooLowException();
+    else
+    {
+        std::cout << "ta9 ta9 ta9 " << std::endl;
+        if (i % 2)
+            std::cout << this->getTarget() << " has been robotomized successfully" << std::endl;
+        else
+            std::cout << "the robotomy failed" << std::endl;
+    }
 }
 
