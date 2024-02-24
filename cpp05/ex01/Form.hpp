@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 05:03:22 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/20 02:08:42 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/02/24 06:43:09 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ public:
     std::string getName() const;
     short int getgradeRequiredToSign() const;
     short int getgradeRequiredRoExecute() const;
+    bool isSigned() const;
 
     void beSigned(const Bureaucrat& obj);
     class GradeTooHighException : public std::exception
@@ -48,4 +49,4 @@ public:
     
 };
 
-        
+std::ostream& operator<<(std::ostream& os, const Form& obj);

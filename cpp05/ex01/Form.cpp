@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 05:03:33 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/20 02:29:55 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/02/24 06:57:31 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,11 @@ short int Form::getgradeRequiredRoExecute() const
     return this->_gradeRequiredRoExecute;
 }
 
+bool Form::isSigned() const
+{
+    return this->_signed;
+}
+
 void Form::beSigned(const Bureaucrat& obj)
 {
     if (this->_gradeRequiredToSign < obj.getGrade())
@@ -94,4 +99,15 @@ const char * Form::GradeTooLowException::what() const throw()
 {
     
     return "Grade Too Low !!";
+}
+
+std::ostream& operator<<(std::ostream& os, const Form& obj)
+{
+    os << obj.getName() << " is ";
+    if (obj.isSigned())
+        os << "signed ";
+    else
+        os << "not signed ";
+    os << "grade required to sign : " << obj.getgradeRequiredToSign() << " grade required to sign" << obj.getgradeRequiredToSign();
+    return os;
 }
