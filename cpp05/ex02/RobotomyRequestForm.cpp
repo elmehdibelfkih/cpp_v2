@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 05:51:17 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/23 06:01:15 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/02/24 07:46:52 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("", 72, 45){}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj)
-{
-    *this = obj;
-}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) : AForm(obj){}
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& obj)
 {
@@ -53,5 +50,6 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
         else
             std::cout << "the robotomy failed" << std::endl;
     }
+    i++;
 }
 

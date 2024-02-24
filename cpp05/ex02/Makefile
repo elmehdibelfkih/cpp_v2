@@ -6,7 +6,7 @@
 #    By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/20 02:33:54 by ebelfkih          #+#    #+#              #
-#    Updated: 2024/02/23 03:28:25 by ebelfkih         ###   ########.fr        #
+#    Updated: 2024/02/24 07:35:43 by ebelfkih         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,5 +31,6 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+makeclean: all clean
 
 re: fclean all

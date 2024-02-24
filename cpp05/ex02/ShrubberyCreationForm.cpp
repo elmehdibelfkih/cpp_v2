@@ -15,10 +15,7 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("", 145, 137){}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj)
-{
-    *this = obj;
-}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj) : AForm(obj){}
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& obj)
 {

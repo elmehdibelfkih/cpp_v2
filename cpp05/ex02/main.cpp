@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:47:13 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/23 06:04:18 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/02/24 07:47:56 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,14 @@ int main (void)
     try
     {
         // AForm bac("bac", 1, 1);
-        Bureaucrat ex("mehdi", 2);
-        ShrubberyCreationForm jrida("nkhal");
-        std::cout << ex.getName() << " : " << ex.getGrade() << std::endl;
-        ex.executeForm(jrida);
+        Bureaucrat ex("khalid", 72);
+        Bureaucrat ex1("mehdi", 45);
+        RobotomyRequestForm robot("maya");
+        // std::cout << ex.getName() << " : " << ex.getGrade() << std::endl;
+        std::cout << ex << std::endl;
+        robot.beSigned(ex);
+        ex1.executeForm(robot);
+        ex1.executeForm(robot);
         
         // ex.incrementGrade();
         // ex.decrementGrade();

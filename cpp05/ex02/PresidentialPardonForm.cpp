@@ -14,10 +14,7 @@
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("", 25, 5){}
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj)
-{
-    *this = obj;
-}
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& obj) : AForm(obj){}
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& obj)
 {
