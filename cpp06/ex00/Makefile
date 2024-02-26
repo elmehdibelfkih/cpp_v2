@@ -5,16 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/20 02:33:54 by ebelfkih          #+#    #+#              #
-#    Updated: 2024/02/24 08:04:53 by ebelfkih         ###   ########.fr        #
+#    Created: 2024/02/24 08:05:09 by ebelfkih          #+#    #+#              #
+#    Updated: 2024/02/24 08:12:54 by ebelfkih         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-NAME = Bureaucrat
+NAME = cast
 GPP = c++ -std=c++98 -Wall -Wextra -Werror
-SRC =	Bureaucrat.cpp  AForm.cpp main.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
-HDRS = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
+SRC =	
+HDRS =
 OBJ = $(SRC:%.cpp=%.o)
 
 
