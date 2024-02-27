@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 08:13:32 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/26 02:37:31 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/02/26 23:30:01 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 void ScalarConverter::convert(const std::string& str) const
 {
-    `
+    int s = 1;
+
+    if (str.c_str()[0] == '-')
+        s = -1;
+    str = (str.c_str() + 1);
+    
+        
 }
 
 std::string trim(const std::string& str, const std::string& trm)
