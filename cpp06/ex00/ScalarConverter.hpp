@@ -6,12 +6,14 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 08:13:25 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/26 02:30:48 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/02/28 00:16:44 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
+#include <cstdlib>
+#include <string>
 
 class ScalarConverter
 {
