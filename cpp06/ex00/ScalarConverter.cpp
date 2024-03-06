@@ -6,72 +6,113 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 08:13:32 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/28 00:53:01 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/03 14:36:05 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-void ScalarConverter::convert(const std::string& str) const
+void ScalarConverter::convert(const std::string& str)
 {
     char  *end;
     double s = std::strtod(str.c_str(), &end);
+    
+    std::cout << std::fixed << std::setprecision(1);
+    if (s == 0 && str.length() == 1 && !('0' <= str.c_str()[0] && str.c_str()[0] <= '9'))
+    {
+        s = static_cast<double>(str.c_str()[0]);
+        end[0] = 0;
+    }
     if (s == 0 && *end)
-        print_impossible(str, true);
+    {
+        // printf("hi\n");
+        print_impossible(s, false);
+    }
     else if (s != 0 && *end)
-        print_impossible(str, false   );
+    {
+        // printf("hi\n");
+        print_impossible(s, false);
+    }
     else if (s == 0 && !*end)
         std::cout << "char: Non displayable\nint: 0\nfloat: 0.0f\ndouble: 0.0"<<std::endl;
-    
-        
+    else if (s != 0 && !*end)
+    {
+        printChar(s);
+        printInt(s);
+        printFloat(s);
+        printDouble(s);
+    }
+    std::cout.unsetf(std::ios_base::floatfield);
+    return ; 
 }
 
-void print_impossible(std::string str, bool s)
+void print_impossible(double nbr, bool s)
 {
-    if (s && (!str.compare("-inff") || !str.compare("+inff") || !str.compare("nanf")
-        || !str.compare("-inf") || !str.compare("-inf") || !str.compare("nan")))
-            infNan(str);
+    if (s)
+            infNan(nbr);
     else
         std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible"<<std::endl;
+    return ;
 }
 
-void infNan(std::string str)
+void infNan(double nbr)
 {
-    if (str.c_str()[0] == '-')
+    if (nbr == -std::numeric_limits<double>::infinity())
+    {
         std::cout << "char: impossible\nint: impossible\nfloat: -inff\ndouble: -inf"<<std::endl;
-    else if (str.c_str()[0] == '+')
+        
+    }
+    else if (nbr == -std::numeric_limits<double>::infinity())
+    {
         std::cout << "char: impossible\nint: impossible\nfloat: +inff\ndouble: +inf"<<std::endl;
-    else if (str.c_str()[0] == 'n')
+        
+    }
+    else if (nbr == -std::numeric_limits<double>::quiet_NaN())
+    {
         std::cout << "char: impossible\nint: impossible\nfloat: nan\ndouble: nan"<<std::endl;
+        
+    }
+    return ;
 }
 
-// std::string trim(const std::string& str, const std::string& trm)
-// {
-//     std::string ret;
-//     std::string::size_type start;
-//     std::string::size_type end;
-//     start =  str.find_first_not_of(trm.c_str());
-//     end =  str.find_first_not_of(trm.c_str());
-//     ret = str.substr(start, end - start + 1);
-//     return ret;
-// }
-
-void printChar(const std::string& str)
+void printChar(const double nbr)
 {
-    
+    if (0 <= nbr && nbr <= 127)
+    {
+        if (0 <= nbr && nbr <= 31)
+            std::cout << "char : non displayable" << std::endl;
+        else
+            std::cout << "char : " << static_cast<char>(nbr) << std::endl;
+    }
+    else
+        std::cout << "char : impossible" << std::endl;
+    return ;
 }
 
-void printInt(const std::string& str)
+void printInt(const double nbr)
 {
-    
+    if (std::numeric_limits<int>::min() <= nbr && nbr <= std::numeric_limits<int>::max())
+    {
+        std::cout << "int : " << static_cast<int>(nbr) << std::endl;
+    }
+    else
+        std::cout << "int : impossible" << std::endl;
+    return ;
 }
 
-void printFloat(const std::string& str)
+void printFloat(const double nbr)
 {
-    
+    if (std::numeric_limits<float>::min() <= nbr && nbr <= std::numeric_limits<float>::max())
+    {
+        std::cout << "float : " << static_cast<float>(nbr) << "f" <<std::endl;
+    }
+    else
+        std::cout << "float : impossible" << std::endl;
+    return ;
 }
 
-double printDouble(const std::string& str)
+void printDouble(const double nbr)
 {
-    
+    std::cout << "double : " << nbr << std::endl;
+    return ;
 }

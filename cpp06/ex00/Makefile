@@ -6,14 +6,14 @@
 #    By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/24 08:05:09 by ebelfkih          #+#    #+#              #
-#    Updated: 2024/02/24 08:12:54 by ebelfkih         ###   ########.fr        #
+#    Updated: 2024/03/03 11:45:55 by ebelfkih         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cast
 GPP = c++ -std=c++98 -Wall -Wextra -Werror
-SRC =	
-HDRS =
+SRC = ScalarConverter.cpp main.cpp
+HDRS = ScalarConverter.hpp
 OBJ = $(SRC:%.cpp=%.o)
 
 
