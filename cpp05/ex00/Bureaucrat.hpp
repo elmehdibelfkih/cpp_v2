@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:47:15 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/18 05:29:34 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/08 14:44:17 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 class Bureaucrat
 {
 private:
-    std::string _name;
+    const std::string _name;
     short int _grade;
 
 public:

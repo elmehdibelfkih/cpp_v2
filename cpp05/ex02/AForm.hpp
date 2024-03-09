@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 05:03:22 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/23 06:00:58 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/09 20:34:56 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ class Bureaucrat;
 class AForm
 {
 private:
-    std::string _target;
+    const std::string _target;
     bool _signed;
-    short int _gradeRequiredToSign;
-    short int _gradeRequiredRoExecute;
+    const short int _gradeRequiredToSign;
+    const short int _gradeRequiredRoExecute;
 public:
 AForm();
     AForm& operator=(const AForm& obj);
@@ -34,10 +34,7 @@ AForm();
     short int getgradeRequiredToSign() const;
     short int getgradeRequiredRoExecute() const;
 
-    void setTarget(std::string target);
     void setSigned(bool Msigned);
-    void setGradeRequiredToSign(short int gradeRequiredToSign);
-    void setGradeRequiredRoExecute(short int gradeRequiredRoExecute);
 
     void beSigned(const Bureaucrat& obj);
     virtual void execute(Bureaucrat const & executor) const = 0;

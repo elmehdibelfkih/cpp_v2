@@ -6,34 +6,26 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 05:03:33 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/23 06:00:35 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/09 22:13:08 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
 
-AForm::AForm()
+AForm::AForm() : _target(""), _gradeRequiredToSign(1), _gradeRequiredRoExecute(1)
 {
-    this->_target = "";
-    this->_gradeRequiredRoExecute = 1;
-    this->_gradeRequiredToSign = 1;
     this->_signed = false;
 }   
  
 AForm& AForm::operator=(const AForm& obj)
 {
     if (this != &obj)
-    {
-        this->_target = obj._target;
-        this->_gradeRequiredRoExecute = obj._gradeRequiredRoExecute;
-        this->_gradeRequiredToSign = obj._gradeRequiredToSign;
         this->_signed = obj._signed;
-    }
     return *this;
 }   
  
-AForm::AForm(const AForm& obj)
+AForm::AForm(const AForm& obj) : _target(obj._target), _gradeRequiredToSign(obj._gradeRequiredToSign), _gradeRequiredRoExecute(obj._gradeRequiredRoExecute)
 {
     *this = obj;
 }   
@@ -43,18 +35,14 @@ AForm::~AForm() {}
 /////////////////////////////////////////////////////////////////
 
 
-AForm::AForm(std::string Target, short int gradeRequiredToSign, short int gradeRequiredRoExecute)
+AForm::AForm(std::string Target, short int gradeRequiredToSign, short int gradeRequiredRoExecute) : _target(Target), _gradeRequiredToSign(gradeRequiredToSign), _gradeRequiredRoExecute(gradeRequiredRoExecute)
 {
     if (gradeRequiredToSign > 150 || gradeRequiredRoExecute > 150)
         throw GradeTooLowException();
     else if (gradeRequiredToSign < 1 || gradeRequiredRoExecute < 1)
         throw GradeTooHighException();
     else
-    {
-        this->_gradeRequiredRoExecute = gradeRequiredRoExecute;
-        this->_gradeRequiredToSign = gradeRequiredToSign;
-        this->_target = Target;
-    }
+        this->_signed = false;
 }
 
 std::string AForm::getTarget() const
@@ -107,23 +95,8 @@ const char * AForm::NotSignedException::what() const throw()
     return "The form is not signed !!";
 }
 
-void AForm::setTarget(std::string target)
-{
-    this->_target = target;
-}
-
 void AForm::setSigned(bool Msigned)
 {
     this->_signed = Msigned;
-}
-
-void AForm::setGradeRequiredToSign(short int gradeRequiredToSign)
-{
-    this->_gradeRequiredToSign = gradeRequiredToSign;
-}
-
-void AForm::setGradeRequiredRoExecute(short int gradeRequiredRoExecute)
-{
-    this->_gradeRequiredRoExecute = gradeRequiredRoExecute;
 }
 

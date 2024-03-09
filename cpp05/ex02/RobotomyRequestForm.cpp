@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 05:51:17 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/24 07:46:52 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/09 22:13:38 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& obj) : AForm
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& obj)
 {
     if (this != &obj)
-    {
-        this->setTarget(obj.getTarget());
         this->setSigned(obj.isSigned());
-        this->setGradeRequiredRoExecute(obj.getgradeRequiredRoExecute());
-        this->setGradeRequiredToSign(obj.getgradeRequiredToSign());
-    }
     return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:47:15 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/20 02:20:53 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/09 20:57:12 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class Form;
 class Bureaucrat
 {
 private:
-    std::string _name;
+    const std::string _name;
     short int _grade;
 
 public:

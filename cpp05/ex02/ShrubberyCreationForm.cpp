@@ -20,12 +20,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& obj) :
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& obj)
 {
     if (this != &obj)
-    {
-        this->setTarget(obj.getTarget());
         this->setSigned(obj.isSigned());
-        this->setGradeRequiredRoExecute(obj.getgradeRequiredRoExecute());
-        this->setGradeRequiredToSign(obj.getgradeRequiredToSign());
-    }
     return *this;
 }
 

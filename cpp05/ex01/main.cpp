@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 17:47:13 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/20 02:25:53 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/09 22:21:33 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int main (void)
     {
         Form bac("bac", 1, 1);
         Bureaucrat ex("mehdi", 2);
-        std::cout << ex.getName() << " : " << ex.getGrade() << std::endl;
+        // std::cout << ex.getName() << " : " << ex.getGrade() << std::endl;
         // ex.incrementGrade();
         // ex.decrementGrade();
         // std::cout << ex.getName() << " : " << ex.getGrade() << std::endl;
-        // std::cout << ex;
+        std::cout << ex << std::endl;
         bac.beSigned(ex);
     }
     catch (const std::exception& e)

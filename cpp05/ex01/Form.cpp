@@ -6,53 +6,42 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 05:03:33 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/24 06:57:31 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/09 21:02:16 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form()
+Form::Form() :_name(""), _gradeRequiredToSign(1), _gradeRequiredRoExecute(1)
 {
-    this->_name = "";
-    this->_gradeRequiredRoExecute = 1;
-    this->_gradeRequiredToSign = 1;
     this->_signed = false;
 }   
  
 Form& Form::operator=(const Form& obj)
 {
     if (this != &obj)
-    {
-        this->_name = obj._name;
-        this->_gradeRequiredRoExecute = obj._gradeRequiredRoExecute;
-        this->_gradeRequiredToSign = obj._gradeRequiredToSign;
         this->_signed = obj._signed;
-    }
     return *this;
 }   
- 
-Form::Form(const Form& obj)
+
+Form::Form(const Form& obj) :_name(obj._name), _gradeRequiredToSign(obj._gradeRequiredToSign) , _gradeRequiredRoExecute(obj._gradeRequiredRoExecute)
 {
-    *this = obj;
-}   
+    this->_signed = obj._signed;
+}
  
 Form::~Form() {}   
 
 /////////////////////////////////////////////////////////////////
 
-Form::Form(std::string name, short int gradeRequiredToSign, short int gradeRequiredRoExecute)
+Form::Form(std::string name, short int gradeRequiredToSign, short int gradeRequiredRoExecute) :_name(name), _gradeRequiredToSign(gradeRequiredToSign), _gradeRequiredRoExecute(gradeRequiredRoExecute)
 {
     if (gradeRequiredToSign > 150 || gradeRequiredRoExecute > 150)
         throw GradeTooLowException();
     else if (gradeRequiredToSign < 1 || gradeRequiredRoExecute < 1)
         throw GradeTooHighException();
     else
-    {
-        this->_gradeRequiredRoExecute = gradeRequiredRoExecute;
-        this->_gradeRequiredToSign = gradeRequiredToSign;
-        this->_name = name;
-    }
+        this->_signed = false;
+    
 }
 
 std::string Form::getName() const

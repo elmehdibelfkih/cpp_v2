@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 05:03:22 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/02/24 06:43:09 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/08 17:54:50 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ class Bureaucrat;
 class Form
 {
 private:
-    std::string _name;
+    const std::string _name;
     bool _signed;
-    short int _gradeRequiredToSign;
-    short int _gradeRequiredRoExecute;
+    const short int _gradeRequiredToSign;
+    const short int _gradeRequiredRoExecute;
 public:
     
     Form();
