@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 05:03:22 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/03/11 19:38:44 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/13 21:19:31 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ private:
     const short int _gradeRequiredToSign;
     const short int _gradeRequiredRoExecute;
 public:
-AForm();
+    AForm();
     AForm& operator=(const AForm& obj);
     AForm(const AForm& obj);
     ~AForm();

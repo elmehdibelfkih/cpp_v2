@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 05:52:02 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/03/11 19:40:51 by ebelfkih         ###   ########.fr       */
+/*   Created: 2024/03/11 17:49:36 by ebelfkih          #+#    #+#             */
+/*   Updated: 2024/03/13 21:21:06 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#include <iostream>
 #include "AForm.hpp"
-#include "Bureaucrat.hpp"
 
-class PresidentialPardonForm : public AForm
+class Intern
 {
-private:
-    const std::string _target;
 public:
-    PresidentialPardonForm();
-    PresidentialPardonForm(const PresidentialPardonForm& obj);
-    PresidentialPardonForm& operator=(const PresidentialPardonForm& obj);
-    ~PresidentialPardonForm();
-    
-    PresidentialPardonForm(std::string target);
-    void execute(Bureaucrat const & executor) const;
+    Intern();
+    Intern(const Intern &obj);
+    Intern& operator=(const Intern &obj);
+    ~Intern();
+
+    AForm *makeForm(std::string name, std::string target);
 };
