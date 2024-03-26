@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 02:03:21 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/03/26 03:08:58 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/26 07:28:56 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,30 @@ void identify(Base* p)
 
 void identify(Base& p)
 {
-    if (typeid(p) == typeid(A))
-        std::cout << "type of the passed class is A" << std::endl;
-    else if (typeid(p) == typeid(B))
-        std::cout << "type of the passed class is B" << std::endl;
-    else if (typeid(p) == typeid(C))
-        std::cout << "type of the passed class is C" << std::endl;
-    else
-        std::cout << "error" << std::endl;
+    try{
+        A& test = dynamic_cast<A&>(p);    
+        (void)test;
+        std::cout << "type of the passed class is A" << std::endl;    
+    }
+    catch(std::bad_cast& e)
+    {
+        try{
+            B& test = dynamic_cast<B&>(p);   
+            (void)test;  
+            std::cout << "type of the passed class is B" << std::endl;   
+        }
+        catch(std::bad_cast& e)
+        {
+             try{
+                C& test = dynamic_cast<C&>(p);  
+                (void)test;  
+                std::cout << "type of the passed class is C" << std::endl;    
+            }
+            catch(std::bad_cast& e)
+            {
+                std::cout << "error" << std::endl;
+            }
+        }
+    }
     return ;   
 }

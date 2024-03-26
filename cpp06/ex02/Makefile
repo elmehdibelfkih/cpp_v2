@@ -6,24 +6,24 @@
 #    By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/26 01:26:32 by ebelfkih          #+#    #+#              #
-#    Updated: 2024/03/26 03:06:22 by ebelfkih         ###   ########.fr        #
+#    Updated: 2024/03/26 07:26:56 by ebelfkih         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Identify
-GPP = c++ -std=c++98 -Wall -Wextra -Werror
-SRC = A.cpp B.cpp C.cpp functions.cpp Base.cpp main.cpp
-HDRS = A.hpp B.hpp C.hpp functions.h Base.hpp
-OBJ = $(SRC:%.cpp=%.o)
-
+NAME=Identify
+CPP=c++
+CPPFLAGS=-std=c++98 -Wall -Wextra -Werror
+SRC=A.cpp B.cpp Base.cpp C.cpp functions.cpp main.cpp
+HDRS=A.hpp B.hpp Base.hpp C.hpp
+OBJ=$(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(GPP) -o $(NAME) $(OBJ)
+	$(CPP) -o $(NAME) $(OBJ)
 
 %.o: %.cpp $(HDRS)
-	$(GPP) -c $< -o $@
+	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)
@@ -31,6 +31,6 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-makeclean: all clean
+exe: all clean
 
 re: fclean all

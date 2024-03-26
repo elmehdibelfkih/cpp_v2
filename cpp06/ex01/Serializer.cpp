@@ -6,11 +6,11 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 00:46:02 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/03/25 08:12:56 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/26 06:35:05 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "serialize.hpp"
+#include "Serializer.hpp"
 
 uintptr_t Serializer::serialize(Data* ptr)
 {
