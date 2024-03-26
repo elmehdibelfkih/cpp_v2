@@ -6,14 +6,14 @@
 #    By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/26 03:38:44 by ebelfkih          #+#    #+#              #
-#    Updated: 2024/03/26 03:41:33 by ebelfkih         ###   ########.fr        #
+#    Updated: 2024/03/26 05:07:56 by ebelfkih         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Identify
+NAME = whatever
 GPP = c++ -std=c++98 -Wall -Wextra -Werror
-SRC = A.cpp B.cpp C.cpp functions.cpp Base.cpp main.cpp
-HDRS = A.hpp B.hpp C.hpp functions.h Base.hpp
+SRC = main.cpp 
+HDRS = whatever.hpp
 OBJ = $(SRC:%.cpp=%.o)
 
 
