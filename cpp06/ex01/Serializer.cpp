@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 08:13:25 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/03/25 07:02:16 by ebelfkih         ###   ########.fr       */
+/*   Created: 2024/03/25 00:46:02 by ebelfkih          #+#    #+#             */
+/*   Updated: 2024/03/25 08:12:56 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#include <iostream>
-#include <cstdlib>
-#include <string>
-#include <limits>
-#include <iomanip>
-#include <cstdio>
-#include <cmath>
+#include "serialize.hpp"
 
-class ScalarConverter
+uintptr_t Serializer::serialize(Data* ptr)
 {
-private:
-    ScalarConverter();
-public:
-    static void convert(const std::string& str); 
-};
+    return(reinterpret_cast<uintptr_t>(ptr));
+}
 
-void printChar(const double nbr);
-void printInt(const double nbr);
-void printFloat(const double nbr);
-void printDouble(const double nbr);
+Data* Serializer::deserialize(uintptr_t raw)
+{
+    return(reinterpret_cast<Data*>(raw));
+}

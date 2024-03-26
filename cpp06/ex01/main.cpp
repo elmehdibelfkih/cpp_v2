@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 08:13:25 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/03/25 07:02:16 by ebelfkih         ###   ########.fr       */
+/*   Created: 2024/03/25 07:28:04 by ebelfkih          #+#    #+#             */
+/*   Updated: 2024/03/26 01:23:12 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#include <iostream>
-#include <cstdlib>
-#include <string>
-#include <limits>
-#include <iomanip>
-#include <cstdio>
-#include <cmath>
+#include "serialize.hpp"
 
-class ScalarConverter
-{
-private:
-    ScalarConverter();
-public:
-    static void convert(const std::string& str); 
-};
+int main() {
+    Data mm;
 
-void printChar(const double nbr);
-void printInt(const double nbr);
-void printFloat(const double nbr);
-void printDouble(const double nbr);
+    mm.i = 10;
+    std::cout << "adress of struct: " << &mm<< " value :" << mm.i << std::endl;
+  
+    // Serialize
+    uintptr_t test = Serializer::serialize(&mm);
+    std::cout << "uinptr : " << test << std::endl;
+
+    // Deserialize
+    Data *yy = Serializer::deserialize(test);
+    std::cout << "Data* : " << yy << std::endl;
+
+    return 0;
+}
