@@ -5,25 +5,25 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/26 03:38:44 by ebelfkih          #+#    #+#              #
-#    Updated: 2024/03/27 03:02:38 by ebelfkih         ###   ########.fr        #
+#    Created: 2024/03/27 04:56:53 by ebelfkih          #+#    #+#              #
+#    Updated: 2024/03/27 09:17:16 by ebelfkih         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = whatever
-GPP = c++ -std=c++98 -Wall -Wextra -Werror
-SRC = main.cpp 
-HDRS = whatever.hpp
-OBJ = $(SRC:%.cpp=%.o)
-
+NAME=easyfind
+CPP=c++
+CPPFLAGS=-std=c++98 -Wall -Wextra -Werror
+SRC=main.cpp
+HDRS=easyfind.hpp
+OBJ=$(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(GPP) -o $(NAME) $(OBJ)
+	$(CPP) -o $(NAME) $(OBJ)
 
 %.o: %.cpp $(HDRS)
-	$(GPP) -c $< -o $@
+	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)

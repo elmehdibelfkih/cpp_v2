@@ -5,45 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/26 08:33:21 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/03/26 13:40:48 by ebelfkih         ###   ########.fr       */
+/*   Created: 2024/03/27 09:13:22 by ebelfkih          #+#    #+#             */
+/*   Updated: 2024/03/27 10:32:02 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
+#include "easyfind.hpp"
+#include <vector>
+#include <list>
 
-int main(void)
+int main (void)
 {
-    Array<int> m(0);
+    std::vector<int> vec;
+    for (int i = 0; i < 12; i++)
+        vec.push_back(i);
+
     try
     {
-        std::cout << m[10] << std::endl;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    Array<std::string> s(2);
-    try
-    {
-        std::cout << s[1] << std::endl;
+        std::cout << *easyfind(vec, 54)<< std::endl;
     }
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
     }
     
-    Array<int> m1(m);
+    std::list<int> lst;
+    for (int i = 0; i < 19; i++)
+    {
+        if (i % 3)
+            lst.push_back(i);
+        else
+            lst.push_front(i);
+    }
+    for(std::list<int>::iterator it = lst.begin(); it != lst.end(); it++)
+    {
+        std::cout << *it << std::endl;
+    }
     try
     {
-        std::cout << "before the modification at the m[1] : " << m1[1] << std::endl;
-        m[1] = 10;
-        std::cout << "after the modification at the m[1] : " << m1[1] << std::endl;
-        
+        std::list<int>::iterator it = easyfind(lst, 11);
+        std::cout << "element finded : " << *it << " at the index : " 
+            << std::distance(lst.begin(), easyfind(lst, 11)) << std::endl;
     }
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
     }
     
+    
+    
+
+    return 0;
 }

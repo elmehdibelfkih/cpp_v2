@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 08:33:57 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/03/26 13:03:26 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/26 13:47:56 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
     ~Array();
     Array(const Array& obj); 
     Array& operator=(const Array& obj);
-    T& operator[](unsigned int i);
+    T& operator[](size_t i);
     
     Array(unsigned int i);
     size_t size() const;
@@ -82,7 +82,7 @@ Array<T>& Array<T>::operator=(const Array& obj)
 }
 
 template <typename T>
-T& Array<T>::operator[](unsigned int i)
+T& Array<T>::operator[](size_t i)
 {
     if (i < 0 || i >= this->i)
         throw std::out_of_range("index out of range");
