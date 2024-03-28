@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/26 05:59:23 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/03/28 13:54:11 by ebelfkih         ###   ########.fr       */
+/*   Created: 2024/03/27 10:38:42 by ebelfkih          #+#    #+#             */
+/*   Updated: 2024/03/27 18:15:00 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include "PrintVal.hpp"
+#include <vector>
 
-template <typename T, typename FUNCTION>
-void iter(T *a, int i, FUNCTION f)
+
+class Span
 {
-    if (i < 0)
-        throw std::out_of_range("the index is out of range !!");
-    for (int j = 0; j < i; j++)
-        f(a[j]);
-}
+private:
+    size_t _MaxElement;
+    std::vector<int> _arr;
+public:
+    Span();
+    Span(const Span& obj);
+    Span& operator=(const Span& obj);
+    ~Span();
+    
+    Span(unsigned  int N);
+    void addNumber(int i);
+    size_t shortestSpan() const;
+    size_t longestSpan() const;
+    void ft_rang(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+};
