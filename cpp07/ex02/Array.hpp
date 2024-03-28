@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 08:33:57 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/03/26 13:47:56 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/28 14:04:31 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,14 @@ private:
     T* arr;
 public:
     Array();
-    ~Array();
     Array(const Array& obj); 
     Array& operator=(const Array& obj);
+    ~Array();
+
     T& operator[](size_t i);
-    
     Array(unsigned int i);
     size_t size() const;
 };
-
-#include "Array.hpp"
-
 
 template <typename T>
 Array<T>::Array()
