@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:38:42 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/03/27 18:15:00 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:57:08 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Span
 {
 private:
     size_t _MaxElement;
-    std::vector<int> _arr;
+    std::vector<int> _vec;
 public:
     Span();
     Span(const Span& obj);

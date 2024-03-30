@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:39:01 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/03/27 18:20:05 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/30 06:44:07 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Span::Span()
 
 Span::Span(const Span& obj) : _MaxElement(obj._MaxElement)
 {
-        this->_arr = obj._arr;
+        this->_vec = obj._vec;
 }
 
 Span& Span::operator=(const Span& obj)
@@ -27,7 +27,7 @@ Span& Span::operator=(const Span& obj)
     if (this != &obj)
     {
         this->_MaxElement = obj._MaxElement;
-        this->_arr = obj._arr;
+        this->_vec = obj._vec;
     }
     return *this;
     
@@ -46,36 +46,39 @@ Span::Span(unsigned int N) : _MaxElement(N)
 
 void Span::addNumber(int i)
 {
-    if (this->_arr.size() == this->_MaxElement)
+    if (this->_vec.size() == this->_MaxElement)
         throw std::out_of_range("the array is full !!");
-    this->_arr.push_back(i);
+    this->_vec.push_back(i);
 }
 
 size_t Span::shortestSpan() const
 {
-    std::vector<int> tmp;
-    if (this->_arr.size() < 2)
+    if (this->_vec.size() < 2)
         throw std::logic_error("cannot get the span !!");
-    int i = std::numeric_limits<int>::max();
-    tmp = this->_arr;
-    for (std::vector<int>::iterator it = tmp.begin(); it < (tmp.end() ); it++)
+    int ret;
+    int i;
+    std::vector<int> tmp;
+    tmp = this->_vec;
+    std::sort(tmp.begin(), tmp.end());
+    ret = tmp[1] - tmp[0];
+    for (std::vector<int>::iterator it = tmp.begin() + 1; it < (tmp.end() ); it++)
     {
-        if ((*(it + 1) - *it) < i)
-            i = (*(it + 1) - *it);
+        i = *it - *(it - 1);
+        if (ret > i)
+            ret = i;
     }
-    return (i);
+    return (ret);
 }
 
 size_t Span::longestSpan() const
 {
-    std::vector<int> tmp;
-    if (this->_arr.size() < 2)
+    if (this->_vec.size() < 2)
         throw std::logic_error("cannot get the span !!");
-    tmp = this->_arr;
+    std::vector<int> tmp;
+    tmp = this->_vec;
     std::sort(tmp.begin(), tmp.end());
     return (( *tmp.rbegin())- (*tmp.begin())  );
 }
-
 
 void Span::ft_rang(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
