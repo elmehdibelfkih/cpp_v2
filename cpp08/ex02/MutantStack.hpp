@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 07:03:06 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/03/30 10:37:50 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/30 10:44:05 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ public:
     MutantStack& operator=(MutantStack& ret);
     ~MutantStack();
 
+    class Iterator;
     void push();
     void pop();
     bool empty();

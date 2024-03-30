@@ -74,6 +74,7 @@
         "random": "cpp",
         "numbers": "cpp",
         "list": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "__functional_03": "cpp"
     }
 }
