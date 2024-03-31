@@ -6,32 +6,29 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 07:03:06 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/03/30 10:44:05 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/03/31 21:42:18 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include <vector>
-
+#include <deque>
+#include <stack>
 
 template <typename T>
-class MutantStack
+class MutantStack : public std::stack<T>
 {
-private:
-    std::vector<T> _MutantStack;
 public:
-    MutantStack();
-    MutantStack(MutantStack& obj);
-    MutantStack& operator=(MutantStack& ret);
-    ~MutantStack();
+    typedef typename std::deque<T>::iterator iterator;
+    iterator begin()
+    {
+        return this->c.begin();
+    }
+    
+    iterator end()
+    {
+        return this->c.end();
+    }
 
-    class Iterator;
-    void push();
-    void pop();
-    bool empty();
-    size_t size();
-    T& top();
 };
-
