@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:17:54 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/04/03 18:33:22 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/04/04 04:22:27 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,20 @@ void BitcoinExchange::output(std::string file_name)
         {
             Mtime = line.substr(0, pos - 1);
             Mval = line.substr(pos + 2, std::numeric_limits<size_t>::max());
-            if (this->checkVal(Mval) > 0 && this->checkTime(Mtime))
-                std::cout << Mtime << " => " << Mval << " = " << this->_data[Mtime] * this->checkVal(Mval) << std::endl;
+            std::map<std::string, double>::iterator it;
+            it = this->_data.lower_bound(Mtime);
+            if (this->_data.begin() == it && it->first != Mtime)
+            {
+                std::cout << "Error: bad input =>" <<  Mtime <<std::endl;
+                continue;
+            }
+            if (it->first != Mtime)
+                it--;
+            if (it == this->_data.end())
+                it--;
+            if (this->checkVal(Mval) >= 0 && this->checkTime(Mtime))
+                std::cout << Mtime << " => " << Mval << " = " << it->second * this->checkVal(Mval) << std::endl;
+            
         }   
     }
 }
@@ -89,9 +101,7 @@ float BitcoinExchange::checkVal(std::string Mval)
     char *end = NULL;
     double val = std::strtod(Mval.c_str(), &end);
     if (std::strcmp("", end) != 0)
-    {
         return std::cout << "Error: bad input => " << Mval << std::endl, -1;
-    }
     if (val > 1000)
         return std::cout << "Error: too large a number." << std::endl, -1;
     if (val < 0)
@@ -118,7 +128,7 @@ bool BitcoinExchange::checkTime(std::string Mtime)
     d = std::strtod(Mtime.substr(8, 2).c_str(), &end);
     if (std::strcmp("", end) != 0 || d < 1 || d > 31)
         return std::cout << "Error: bad input => " << Mtime << std::endl, false;
-    if (y == 2009 && m == 1 && d == 2)
+    if (y == 2009 && m == 1 && d == 1)
         return std::cout << "Error: bad input => " << Mtime << std::endl, false;
     if (m == 2)
     {

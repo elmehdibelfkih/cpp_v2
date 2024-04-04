@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:19:35 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/04/03 17:58:19 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/04/04 02:31:21 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 #include <fstream>
 #include <map>
+
 
 class BitcoinExchange
 {
