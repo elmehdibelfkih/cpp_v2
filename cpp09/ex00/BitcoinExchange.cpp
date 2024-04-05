@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:17:54 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/04/04 04:22:27 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:05:16 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ BitcoinExchange::BitcoinExchange(std::string FileDataBase)
     std::string Mfloat;
     char *end;
 
-    data_base.open(FileDataBase);
+    data_base.open(FileDataBase.c_str());
     std::getline(data_base, line);
     while (std::getline(data_base, line))
     {
@@ -62,7 +62,7 @@ void BitcoinExchange::output(std::string file_name)
     std::string Mval;
     size_t pos;
 
-    inputFile.open(file_name);
+    inputFile.open(file_name.c_str());
     std::getline(inputFile, line);
     if (line.compare("date | value") != 0)
     {
