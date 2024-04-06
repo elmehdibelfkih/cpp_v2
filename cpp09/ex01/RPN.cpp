@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 18:36:52 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/04/04 18:23:47 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/04/06 05:40:02 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ int calculate(std::string numbers)
     for (std::string::iterator it = numbers.begin(); it < numbers.end(); it++)
     {
         if (std::isdigit(*it))
+        {
             _stk.push(*it - '0');
+            if ((it + 1) != numbers.end() && std::isdigit(*(it + 1)))
+                throw std::logic_error("Error");
+        }
         else if (*it == '+' && _stk.size() >= 2)
         {
             tmp = _stk.top();
@@ -42,6 +46,8 @@ int calculate(std::string numbers)
         {
             tmp = _stk.top();
             _stk.pop();
+            if (tmp == 0)
+                throw std::logic_error("Error");
             tmp = _stk.top() / tmp;
             _stk.pop();
             _stk.push(tmp);
