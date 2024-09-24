@@ -6,16 +6,16 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 18:36:52 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/04/06 05:40:02 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/09/24 20:19:16 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-int calculate(std::string numbers)
+double calculate(std::string numbers)
 {
-    int tmp;
-    std::stack<int> _stk;
+    double tmp;
+    std::stack<double> _stk;
 
     
     for (std::string::iterator it = numbers.begin(); it < numbers.end(); it++)
