@@ -6,7 +6,7 @@
 #    By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/03 22:01:26 by ebelfkih          #+#    #+#              #
-#    Updated: 2024/04/03 22:01:52 by ebelfkih         ###   ########.fr        #
+#    Updated: 2024/09/21 06:19:44 by ebelfkih         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJ=$(SRC:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CPP) -o $(NAME) $(OBJ)
+	$(CPP) $(CPPFLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.cpp $(HDRS)
 	$(CPP) $(CPPFLAGS) -c $< -o $@

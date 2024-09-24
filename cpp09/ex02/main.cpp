@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 22:02:54 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/04/05 22:56:37 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/09/21 06:18:10 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int ac, char**av)
     std::deque<int> deq;
     struct timeval start, end;
 
-    if (ac == 1)
+    if (ac == 1 || ac == 2)
         return std::cout << "Error" << std::endl, 1;
 
     try

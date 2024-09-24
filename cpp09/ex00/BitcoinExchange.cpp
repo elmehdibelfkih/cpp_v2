@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:17:54 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/04/05 14:05:16 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/09/24 20:42:10 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,14 @@ void BitcoinExchange::output(std::string file_name)
     size_t pos;
 
     inputFile.open(file_name.c_str());
+    if (!inputFile.is_open())
+    {
+        std::cout <<"Error: could not open file" << std::endl;
+        return;
+    }
+
     std::getline(inputFile, line);
+    line = this->trimSpacesAndTabs(line);
     if (line.compare("date | value") != 0)
     {
         std::cout << "Error: bad input => " << line << std::endl;
@@ -76,8 +83,9 @@ void BitcoinExchange::output(std::string file_name)
             std::cout << "Error: bad input => " << line << std::endl;
         else
         {
-            Mtime = line.substr(0, pos - 1);
-            Mval = line.substr(pos + 2, std::numeric_limits<size_t>::max());
+            Mtime = this->trimSpacesAndTabs(line.substr(0, pos - 1));
+            Mval = this->trimSpacesAndTabs(line.substr(pos + 1, std::numeric_limits<size_t>::max()));
+            this->trimSpacesAndTabs(line);
             std::map<std::string, double>::iterator it;
             it = this->_data.lower_bound(Mtime);
             if (this->_data.begin() == it && it->first != Mtime)
@@ -102,6 +110,8 @@ float BitcoinExchange::checkVal(std::string Mval)
     double val = std::strtod(Mval.c_str(), &end);
     if (std::strcmp("", end) != 0)
         return std::cout << "Error: bad input => " << Mval << std::endl, -1;
+    if (std::strcmp("", end) != 0)
+        return std::cout << "Error: bad input => " << Mval << std::endl, -1;
     if (val > 1000)
         return std::cout << "Error: too large a number." << std::endl, -1;
     if (val < 0)
@@ -118,7 +128,7 @@ bool BitcoinExchange::checkTime(std::string Mtime)
     int d;
 
     if (Mtime.length() != 10 )
-        return std::cout << "Error: bad input => " << Mtime << std::endl, false;
+        return std::cout << "Error: bad input: => " << Mtime << std::endl, false;
     y = std::strtod(Mtime.substr(0, 4).c_str(), &end);
     if (std::strcmp("", end) != 0 || y < 2009)
         return std::cout << "Error: bad input => " << Mtime << std::endl, false;
@@ -142,3 +152,11 @@ bool BitcoinExchange::checkTime(std::string Mtime)
     return true;
 }
 
+std::string BitcoinExchange::trimSpacesAndTabs(const std::string &input) 
+{
+    std::string::size_type start = 0;
+    std::string::size_type end = input.length();
+    while (start < end && (input[start] == ' ' || input[start] == '	')) {++start;}
+    while (end > start && (input[end - 1] == ' ' || input[end - 1] == '	')) {--end;}
+    return input.substr(start, end - start);
+}
