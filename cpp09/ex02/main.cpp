@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 22:02:54 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/09/21 06:18:10 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/09/25 03:36:01 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int main(int ac, char**av)
 
     if (ac == 1 || ac == 2)
         return std::cout << "Error" << std::endl, 1;
-
     try
     {
         std::cout << "Before: ";
@@ -33,24 +32,30 @@ int main(int ac, char**av)
         if (i == 6)
             std::cout << "[ ... ]" ;
         std::cout << std::endl;
+        
         gettimeofday(&start, NULL);
         checkParam(av, vec);
         sort(vec);
         gettimeofday(&end, NULL);
+    
         std::cout << "After: ";
         print_con(vec);
         seconds = end.tv_sec - start.tv_sec;
         microseconds = end.tv_usec - start.tv_usec;
         totalTimeInMicroseconds = seconds * 1000000 + microseconds;
+
         std::cout << "Time to process a range of " << ac - 1 
             << " elements with std::vector : " << totalTimeInMicroseconds << " us." << std::endl;
+
         gettimeofday(&start, NULL);
         checkParam(av, deq);
         sort(deq);
         gettimeofday(&end, NULL);
+    
         seconds = end.tv_sec - start.tv_sec;
         microseconds = end.tv_usec - start.tv_usec;
         totalTimeInMicroseconds = seconds * 1000000 + microseconds;
+    
         std::cout << "Time to process a range of " << ac - 1
             << " elements with std::deque : " << totalTimeInMicroseconds << " us." << std::endl;
     }

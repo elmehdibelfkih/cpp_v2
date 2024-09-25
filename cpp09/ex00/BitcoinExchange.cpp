@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:17:54 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/09/24 20:42:10 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/09/25 03:19:03 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ bool BitcoinExchange::checkTime(std::string Mtime)
     int m;
     int d;
 
-    if (Mtime.length() != 10 )
+    if (Mtime > this->getCurrentTimeString())
         return std::cout << "Error: bad input: => " << Mtime << std::endl, false;
     y = std::strtod(Mtime.substr(0, 4).c_str(), &end);
     if (std::strcmp("", end) != 0 || y < 2009)
@@ -159,4 +159,13 @@ std::string BitcoinExchange::trimSpacesAndTabs(const std::string &input)
     while (start < end && (input[start] == ' ' || input[start] == '	')) {++start;}
     while (end > start && (input[end - 1] == ' ' || input[end - 1] == '	')) {--end;}
     return input.substr(start, end - start);
+}
+
+std::string BitcoinExchange::getCurrentTimeString() 
+{
+    std::time_t currentTime = std::time(NULL);
+    std::tm *localTime = std::localtime(&currentTime);
+    char buffer[11];
+    std::strftime(buffer, sizeof(buffer), "%Y-%m-%d", localTime);
+    return std::string(buffer);
 }

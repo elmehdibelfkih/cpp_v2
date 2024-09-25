@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:19:35 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/09/24 20:13:15 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/09/24 21:10:36 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ private:
     bool checkTime(std::string Mtime);
     float checkVal(std::string Mval);
     std::string trimSpacesAndTabs(const std::string &input);
+    std::string getCurrentTimeString();
 public:
     BitcoinExchange();
     BitcoinExchange(const BitcoinExchange& obj);
