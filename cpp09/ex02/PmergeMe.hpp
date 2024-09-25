@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 22:02:31 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/04/05 22:55:08 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/09/25 09:16:31 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,39 +24,10 @@
 
 void swap(int &a, int &b);
 
-template <typename T>
-void checkParam(char **av, T& con)
-{
-    int i = 0;
+void checkParam(char **av, std::vector<int> &vec);
 
-    int tmp;
-    char *end;
+void print_con(std::vector<int> &vec);
 
-    while (av[++i])
-    {
-        if (std::strchr(av[i], '.'))
-            throw std::logic_error("Error: not a integer ");
-        tmp = std::strtod(av[i], &end);
-        if (std::strcmp(end, "") || tmp < 0)
-            throw std::logic_error("Error: not a digit ");
-        con.push_back(tmp);
-    }
-    return ;
-}
-
-template <typename T>
-void print_con(T& con)
-{
-    short int i = 0;
-    for (typename T::iterator it = con.begin(); it < con.end(); it++)
-    {
-        if (i++ == 5)
-            break;
-        std::cout << " " << *it ;
-    }
-    std::cout << " [ ... ]" << std::endl;
-   
-}
 
 template <typename T>
 void mainPendChain(T& mainC, T& pendC, bool check, int tmp)
@@ -89,11 +60,12 @@ void mainPendChain(T& mainC, T& pendC, bool check, int tmp)
 template <typename T>
 void sort(T &a)
 {
-    typename
-    T::iterator it;
+    typename T::iterator it;
     T tmp;
     int tmp1;
     bool check = false;
+    if (a.size() == 1)
+        return ;
 
     if (a.size() % 2 != 0)
     {

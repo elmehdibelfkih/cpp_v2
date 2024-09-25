@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:17:54 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/09/25 03:19:03 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/09/25 06:21:06 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void BitcoinExchange::output(std::string file_name)
     line = this->trimSpacesAndTabs(line);
     if (line.compare("date | value") != 0)
     {
-        std::cout << "Error: bad input => " << line << std::endl;
+        std::cout << "Error: Invalid file format => " << line << std::endl;
         return;
     }
     while (std::getline(inputFile, line))
@@ -83,10 +83,15 @@ void BitcoinExchange::output(std::string file_name)
             std::cout << "Error: bad input => " << line << std::endl;
         else
         {
-            Mtime = this->trimSpacesAndTabs(line.substr(0, pos - 1));
+            Mtime = this->trimSpacesAndTabs(line.substr(0, pos));
             Mval = this->trimSpacesAndTabs(line.substr(pos + 1, std::numeric_limits<size_t>::max()));
             this->trimSpacesAndTabs(line);
             std::map<std::string, double>::iterator it;
+            if (Mval == "")
+            {
+                std::cout << "Error: bad input => " << line << std::endl;
+                continue;
+            }
             it = this->_data.lower_bound(Mtime);
             if (this->_data.begin() == it && it->first != Mtime)
             {
@@ -99,7 +104,6 @@ void BitcoinExchange::output(std::string file_name)
                 it--;
             if (this->checkVal(Mval) >= 0 && this->checkTime(Mtime))
                 std::cout << Mtime << " => " << Mval << " = " << it->second * this->checkVal(Mval) << std::endl;
-            
         }   
     }
 }

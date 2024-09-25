@@ -6,7 +6,7 @@
 /*   By: ebelfkih <ebelfkih@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 18:36:09 by ebelfkih          #+#    #+#             */
-/*   Updated: 2024/09/24 20:19:43 by ebelfkih         ###   ########.fr       */
+/*   Updated: 2024/09/25 06:43:33 by ebelfkih         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,3 @@
 #include <iostream>
 
 double calculate(std::string numbers);
-
